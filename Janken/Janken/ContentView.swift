@@ -43,23 +43,18 @@ struct ContentView: View {
         }
     }
     
-    func judgeResult(_ id: Int) {
-        isCorrectThisRound = shouldWin == compare(player: id, cpu: cpuMove)
+    func judgeResult(_ playerMove: Int) {
+        if shouldWin {
+            isCorrectThisRound = playerMove - cpuMove == 1 || playerMove - cpuMove == -2
+        } else {
+            isCorrectThisRound = cpuMove - playerMove == 1 || cpuMove - playerMove == -2
+        }
+
         if isCorrectThisRound {
             score += 1
         }
+        
         showAlert = true
-    }
-    
-    func compare(player: Int, cpu: Int) -> Bool {
-        switch player {
-        case 0:
-            return cpu == 2
-        case 1:
-            return cpu == 0
-        default:
-            return cpu == 1
-        }
     }
     
     func newQuestion() {
