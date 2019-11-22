@@ -20,6 +20,7 @@
 		224954862384109100BA9932 /* Mission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224954852384109100BA9932 /* Mission.swift */; };
 		22743A642385590800161733 /* MissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22743A632385590800161733 /* MissionView.swift */; };
 		22743A662385613F00161733 /* AstronautView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22743A652385613F00161733 /* AstronautView.swift */; };
+		22743A6823880B7700161733 /* MissionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22743A6723880B7700161733 /* MissionViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		224954852384109100BA9932 /* Mission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mission.swift; sourceTree = "<group>"; };
 		22743A632385590800161733 /* MissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionView.swift; sourceTree = "<group>"; };
 		22743A652385613F00161733 /* AstronautView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstronautView.swift; sourceTree = "<group>"; };
+		22743A6723880B7700161733 /* MissionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 				22743A652385613F00161733 /* AstronautView.swift */,
 				2249548123840C6D00BA9932 /* Astronaut.swift */,
 				224954852384109100BA9932 /* Mission.swift */,
+				22743A6723880B7700161733 /* MissionViewModel.swift */,
 				2249548323840CAC00BA9932 /* Bundle-Decodable.swift */,
 				2249546F2382B17A00BA9932 /* Assets.xcassets */,
 				224954742382B17A00BA9932 /* LaunchScreen.storyboard */,
@@ -169,6 +172,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22743A6823880B7700161733 /* MissionViewModel.swift in Sources */,
 				22743A642385590800161733 /* MissionView.swift in Sources */,
 				224954862384109100BA9932 /* Mission.swift in Sources */,
 				22743A662385613F00161733 /* AstronautView.swift in Sources */,

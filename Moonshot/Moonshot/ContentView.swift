@@ -9,27 +9,43 @@
 import SwiftUI
 
 struct ContentView: View {
-    let astronauts: [Astronaut] = Bundle.main.decode("astronauts.json")
-    let missions: [Mission] = Bundle.main.decode("missions.json")
+    let astronauts: [Astronaut]
+    let missions: [Mission]
+    let missionsViewModels: [MissionViewModel]
+    
+    @State private var isShowingDate = true
     
     var body: some View {
         NavigationView {
-            List(missions) { mission in
-                NavigationLink(destination: MissionView(mission: mission, astronauts: self.astronauts)) {
-                    Image(mission.image)
+            List(missionsViewModels) { mvm in
+                NavigationLink(destination: MissionView(missions: self.missions, mission: mvm.mission, astronauts: self.astronauts)) {
+                    Image(mvm.mission.image)
                         .resizable()
                         .scaledToFit()
                         .frame(width: 44, height: 44)
                     
                     VStack(alignment: .leading) {
-                        Text(mission.displayName)
+                        Text(mvm.mission.displayName)
                             .font(.headline)
-                        Text(mission.formattedLaunchDate)
+                        Text(self.isShowingDate ? mvm.mission.formattedLaunchDate : mvm.dispCrewNames)
                     }
                 }
             }
-        .navigationBarTitle("Moonshot")
+            .navigationBarTitle("Moonshot")
+            .navigationBarItems(trailing: Button("Switch") {
+                self.isShowingDate.toggle()
+            })
         }
+    }
+    
+    init() {
+        astronauts = Bundle.main.decode("astronauts.json")
+        missions = Bundle.main.decode("missions.json")
+        var tempMVM = [MissionViewModel]()
+        for mission in missions {
+            tempMVM.append(MissionViewModel(mission: mission, astronauts: astronauts))
+        }
+        missionsViewModels = tempMVM
     }
 }
 

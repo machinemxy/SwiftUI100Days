@@ -36,4 +36,6 @@ struct Mission: Codable, Identifiable {
             return "N/A"
         }
     }
+    
+    
 }
