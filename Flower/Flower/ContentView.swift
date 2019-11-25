@@ -14,6 +14,16 @@ struct Flower: Shape {
 
     // How wide to make each petal
     var petalWidth: Double = 100
+    
+    public var animatableData: AnimatablePair<Double, Double> {
+        get {
+            AnimatablePair(petalOffset, petalWidth)
+        }
+        set {
+            self.petalOffset = newValue.first
+            self.petalWidth = newValue.second
+        }
+    }
 
     func path(in rect: CGRect) -> Path {
         // The path that will hold all petals
@@ -50,6 +60,12 @@ struct ContentView: View {
         VStack {
             Flower(petalOffset: petalOffset, petalWidth: petalWidth)
                 .fill(Color.red, style: FillStyle(eoFill: true))
+                .onTapGesture {
+                    withAnimation {
+                        self.petalOffset = Double.random(in: -40...40)
+                        self.petalWidth = Double.random(in: 0...100)
+                    }
+                }
 
             Text("Offset")
             Slider(value: $petalOffset, in: -40...40)
