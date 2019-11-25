@@ -8,24 +8,33 @@
 
 import SwiftUI
 
-struct Triangle: Shape {
+struct Triangle: InsettableShape {
+    var insetAmount: CGFloat = 0
+    
     func path(in rect: CGRect) -> Path {
         var path = Path()
 
-        path.move(to: CGPoint(x: rect.midX, y: rect.minY))
-        path.addLine(to: CGPoint(x: rect.minX, y: rect.maxY))
-        path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
-        path.addLine(to: CGPoint(x: rect.midX, y: rect.minY))
+        path.move(to: CGPoint(x: rect.midX, y: rect.minY + insetAmount))
+        path.addLine(to: CGPoint(x: rect.minX + insetAmount, y: rect.maxY - insetAmount))
+        path.addLine(to: CGPoint(x: rect.maxX - insetAmount, y: rect.maxY - insetAmount))
+        path.addLine(to: CGPoint(x: rect.midX, y: rect.minY + insetAmount))
 
         return path
+    }
+    
+    func inset(by amount: CGFloat) -> some InsettableShape {
+        var triangle = self
+        triangle.insetAmount += amount
+        return triangle
     }
 }
 
 struct ContentView: View {
     var body: some View {
         Triangle()
-            .stroke(Color.red, style: StrokeStyle(lineWidth: 10, lineCap: .round, lineJoin: .round))
+            .strokeBorder(Color.red, style: StrokeStyle(lineWidth: 10, lineCap: .round, lineJoin: .round))
             .frame(width: 300, height: 300)
+            .border(ImagePaint(image: Image("heart"), scale: 0.2), width: 10)
     }
 }
 
