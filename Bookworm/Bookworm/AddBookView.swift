@@ -45,8 +45,9 @@ struct AddBookView: View {
                         newBook.title = self.title
                         newBook.author = self.author
                         newBook.rating = Int16(self.rating)
-                        newBook.genre = self.genre
+                        newBook.genre = self.genre.isEmpty ? "Unknown" : self.genre
                         newBook.review = self.review
+                        newBook.date = Date()
 
                         try? self.moc.save()
                         self.presentationMode.wrappedValue.dismiss()
