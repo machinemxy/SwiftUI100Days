@@ -20,4 +20,12 @@ struct User: Identifiable, Codable {
     var registered: String
     var tags: [String]
     var friends: [Friend]
+    
+    var displayRegistered: String {
+        String(registered.replacingOccurrences(of: "T", with: " ").dropLast(6))
+    }
+    
+    var displayTags: String {
+        tags.joined(separator: "  ")
+    }
 }

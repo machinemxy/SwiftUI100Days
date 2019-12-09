@@ -15,7 +15,18 @@ struct ContentView: View {
         NavigationView {
             List {
                 ForEach(users.userList) { user in
-                    Text(user.name)
+                    NavigationLink(destination: UserView(userList: self.users.userList, userId: user.id)) {
+                        HStack {
+                            Circle()
+                                .frame(width: 20, height: 20)
+                                .foregroundColor(self.activeColor(user.isActive))
+                            VStack(alignment: .leading) {
+                                Text(user.name).font(.headline)
+                                Text(user.company).font(.subheadline)
+                            }
+                            Spacer()
+                        }
+                    }
                 }
             }
             .onAppear(perform: loadData)
@@ -24,20 +35,26 @@ struct ContentView: View {
     }
     
     func loadData() {
-        guard let url = URL(string: "https://www.hackingwithswift.com/samples/friendface.json") else {
-            fatalError("Failed to access to URL.")
-        }
+        let url = URL(string: "https://www.hackingwithswift.com/samples/friendface.json")!
+        let request = URLRequest(url: url)
         
-        guard let data = try? Data(contentsOf: url) else {
-            fatalError("Failed to load data.")
-        }
-        
-        let decoder = JSONDecoder()
-        guard let loaded = try? decoder.decode([User].self, from: data) else {
-            fatalError("Failed to decode data.")
-        }
-        
-        users.userList = loaded
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data else {
+                fatalError("No data in response.")
+            }
+                
+            if let decoded = try? JSONDecoder().decode([User].self, from: data) {
+                DispatchQueue.main.async {
+                    self.users.userList = decoded
+                }
+            } else {
+                fatalError("Invalid response from server.")
+            }
+        }.resume()
+    }
+    
+    func activeColor(_ isActive: Bool) -> Color {
+        isActive ? .green : .red
     }
 }
 
