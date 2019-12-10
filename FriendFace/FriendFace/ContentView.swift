@@ -45,7 +45,9 @@ struct ContentView: View {
                 
             if let decoded = try? JSONDecoder().decode([User].self, from: data) {
                 DispatchQueue.main.async {
-                    self.users.userList = decoded
+                    self.users.userList = decoded.sorted(by: { (u1, u2) -> Bool in
+                        u1.name < u2.name
+                    })
                 }
             } else {
                 fatalError("Invalid response from server.")

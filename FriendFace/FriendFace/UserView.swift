@@ -35,7 +35,7 @@ struct UserView: View {
             }
             
             Section(header: Text("Friends")) {
-                ForEach(user.friends) { friend in
+                ForEach(user.sortedFriends) { friend in
                     NavigationLink(destination: UserView(userList: self.userList, userId: friend.id)) {
                         Text(friend.name)
                     }

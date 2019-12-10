@@ -28,4 +28,10 @@ struct User: Identifiable, Codable {
     var displayTags: String {
         tags.joined(separator: "  ")
     }
+    
+    var sortedFriends: [Friend] {
+        friends.sorted { (f1, f2) -> Bool in
+            f1.name < f2.name
+        }
+    }
 }
