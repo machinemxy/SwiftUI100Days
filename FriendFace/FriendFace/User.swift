@@ -12,7 +12,7 @@ struct User: Identifiable, Codable {
     var id: String
     var isActive: Bool
     var name: String
-    var age: Int
+    var age: Int16
     var company: String
     var email: String
     var address: String

@@ -18,6 +18,8 @@
 		22E1DC72239D469B001D516B /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E1DC71239D469B001D516B /* Friend.swift */; };
 		22E1DC74239D4B30001D516B /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E1DC73239D4B30001D516B /* Users.swift */; };
 		22E1DC78239E6843001D516B /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E1DC77239E6843001D516B /* UserView.swift */; };
+		22E1DCAB239FCABB001D516B /* CDUser+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E1DCA9239FCABB001D516B /* CDUser+CoreDataClass.swift */; };
+		22E1DCAC239FCABB001D516B /* CDUser+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E1DCAA239FCABB001D516B /* CDUser+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		22E1DC71239D469B001D516B /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 		22E1DC73239D4B30001D516B /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
 		22E1DC77239E6843001D516B /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
+		22E1DCA9239FCABB001D516B /* CDUser+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDUser+CoreDataClass.swift"; sourceTree = "<group>"; };
+		22E1DCAA239FCABB001D516B /* CDUser+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDUser+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +70,8 @@
 		22E1DC57239D3DE2001D516B /* FriendFace */ = {
 			isa = PBXGroup;
 			children = (
+				22E1DCA9239FCABB001D516B /* CDUser+CoreDataClass.swift */,
+				22E1DCAA239FCABB001D516B /* CDUser+CoreDataProperties.swift */,
 				22E1DC58239D3DE2001D516B /* AppDelegate.swift */,
 				22E1DC5A239D3DE2001D516B /* SceneDelegate.swift */,
 				22E1DC5F239D3DE2001D516B /* ContentView.swift */,
@@ -162,7 +168,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				22E1DC5E239D3DE2001D516B /* FriendFace.xcdatamodeld in Sources */,
+				22E1DCAC239FCABB001D516B /* CDUser+CoreDataProperties.swift in Sources */,
 				22E1DC59239D3DE2001D516B /* AppDelegate.swift in Sources */,
+				22E1DCAB239FCABB001D516B /* CDUser+CoreDataClass.swift in Sources */,
 				22E1DC60239D3DE2001D516B /* ContentView.swift in Sources */,
 				22E1DC78239E6843001D516B /* UserView.swift in Sources */,
 				22E1DC72239D469B001D516B /* Friend.swift in Sources */,
