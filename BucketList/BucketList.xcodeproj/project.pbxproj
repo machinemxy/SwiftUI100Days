@@ -14,6 +14,7 @@
 		226E741523A4F01C00BDC82E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 226E741423A4F01C00BDC82E /* Preview Assets.xcassets */; };
 		226E741823A4F01C00BDC82E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 226E741623A4F01C00BDC82E /* LaunchScreen.storyboard */; };
 		226E742023A4F04B00BDC82E /* FileManager-Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E741F23A4F04B00BDC82E /* FileManager-Codable.swift */; };
+		226E742223A666E300BDC82E /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E742123A666E300BDC82E /* MapView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		226E741723A4F01C00BDC82E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		226E741923A4F01C00BDC82E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		226E741F23A4F04B00BDC82E /* FileManager-Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager-Codable.swift"; sourceTree = "<group>"; };
+		226E742123A666E300BDC82E /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				226E740B23A4F01B00BDC82E /* AppDelegate.swift */,
 				226E740D23A4F01B00BDC82E /* SceneDelegate.swift */,
 				226E740F23A4F01B00BDC82E /* ContentView.swift */,
+				226E742123A666E300BDC82E /* MapView.swift */,
 				226E741F23A4F04B00BDC82E /* FileManager-Codable.swift */,
 				226E741123A4F01C00BDC82E /* Assets.xcassets */,
 				226E741623A4F01C00BDC82E /* LaunchScreen.storyboard */,
@@ -151,6 +154,7 @@
 			files = (
 				226E740C23A4F01B00BDC82E /* AppDelegate.swift in Sources */,
 				226E740E23A4F01B00BDC82E /* SceneDelegate.swift in Sources */,
+				226E742223A666E300BDC82E /* MapView.swift in Sources */,
 				226E742023A4F04B00BDC82E /* FileManager-Codable.swift in Sources */,
 				226E741023A4F01B00BDC82E /* ContentView.swift in Sources */,
 			);
