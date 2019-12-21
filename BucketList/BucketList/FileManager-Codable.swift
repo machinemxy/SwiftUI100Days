@@ -17,11 +17,12 @@ extension FileManager {
         return paths[0]
     }
     
-    func load<T: Codable>(from file: String) -> T {
+    func load<T: Codable>(from file: String) -> T? {
         let url = getDocumentsDirectory().appendingPathComponent(file)
 
         guard let data = try? Data(contentsOf: url) else {
-            fatalError("Failed to load \(file).")
+            print("Cannnot find file \(file).")
+            return nil
         }
         
         let decoder = JSONDecoder()
@@ -40,7 +41,7 @@ extension FileManager {
         
         let url = getDocumentsDirectory().appendingPathComponent(file)
         do {
-            try encoded.write(to: url, options: .atomic)
+            try encoded.write(to: url, options: [.atomicWrite, .completeFileProtection])
         } catch {
             fatalError("Failed to write \(file).")
         }
