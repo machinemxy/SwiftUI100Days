@@ -10,6 +10,42 @@ import SwiftUI
 import LocalAuthentication
 import MapKit
 
+struct AddButton: View {
+    var centerCoordinate: CLLocationCoordinate2D
+    @Binding var locations: [CodableMKPointAnnotation]
+    @Binding var selectedPlace: MKPointAnnotation?
+    @Binding var showingEditScreen: Bool
+    
+    var body: some View {
+        Button(action: {
+            // create a new location
+            let newLocation = CodableMKPointAnnotation()
+            newLocation.coordinate = self.centerCoordinate
+            newLocation.title = "Example location"
+            self.locations.append(newLocation)
+            self.selectedPlace = newLocation
+            self.showingEditScreen = true
+        }) {
+            Image(systemName: "plus")
+            .padding()
+            .background(Color.black.opacity(0.75))
+            .foregroundColor(.white)
+            .font(.title)
+            .clipShape(Circle())
+            .padding(.trailing)
+        }
+    }
+}
+
+struct BlueCircle: View {
+    var body: some View {
+        Circle()
+        .fill(Color.blue)
+        .opacity(0.3)
+        .frame(width: 32, height: 32)
+    }
+}
+
 struct ContentView: View {
     @State private var isUnlocked = false
     @State private var centerCoordinate = CLLocationCoordinate2D()
@@ -24,32 +60,14 @@ struct ContentView: View {
             if isUnlocked {
                 MapView(centerCoordinate: $centerCoordinate, selectedPlace: $selectedPlace, showingPlaceDetails: $showingPlaceDetails, annotations: locations)
                     .edgesIgnoringSafeArea(.all)
-                Circle()
-                    .fill(Color.blue)
-                    .opacity(0.3)
-                    .frame(width: 32, height: 32)
+                
+                BlueCircle()
                 
                 VStack {
                     Spacer()
                     HStack {
                         Spacer()
-                        Button(action: {
-                            // create a new location
-                            let newLocation = CodableMKPointAnnotation()
-                            newLocation.coordinate = self.centerCoordinate
-                            newLocation.title = "Example location"
-                            self.locations.append(newLocation)
-                            self.selectedPlace = newLocation
-                            self.showingEditScreen = true
-                        }) {
-                            Image(systemName: "plus")
-                            .padding()
-                            .background(Color.black.opacity(0.75))
-                            .foregroundColor(.white)
-                            .font(.title)
-                            .clipShape(Circle())
-                            .padding(.trailing)
-                        }
+                        AddButton(centerCoordinate: centerCoordinate, locations: $locations, selectedPlace: $selectedPlace, showingEditScreen: $showingEditScreen)
                     }
                 }
                 .alert(isPresented: $showingPlaceDetails) {
