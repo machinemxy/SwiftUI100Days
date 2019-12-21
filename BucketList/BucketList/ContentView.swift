@@ -17,6 +17,7 @@ struct ContentView: View {
     @State private var selectedPlace: MKPointAnnotation?
     @State private var showingPlaceDetails = false
     @State private var showingEditScreen = false
+    @State private var showingAuthenticateFail = false
     
     var body: some View {
         ZStack {
@@ -42,13 +43,13 @@ struct ContentView: View {
                             self.showingEditScreen = true
                         }) {
                             Image(systemName: "plus")
+                            .padding()
+                            .background(Color.black.opacity(0.75))
+                            .foregroundColor(.white)
+                            .font(.title)
+                            .clipShape(Circle())
+                            .padding(.trailing)
                         }
-                        .padding()
-                        .background(Color.black.opacity(0.75))
-                        .foregroundColor(.white)
-                        .font(.title)
-                        .clipShape(Circle())
-                        .padding(.trailing)
                     }
                 }
                 .alert(isPresented: $showingPlaceDetails) {
@@ -71,6 +72,9 @@ struct ContentView: View {
                 .background(Color.blue)
                 .foregroundColor(.white)
                 .clipShape(Capsule())
+                .alert(isPresented: $showingAuthenticateFail) { () -> Alert in
+                    Alert(title: Text("Authentication Failed"), message: Text(""), dismissButton: .default(Text("OK")))
+                }
             }
         }
         
@@ -103,11 +107,13 @@ struct ContentView: View {
                         self.isUnlocked = true
                     } else {
                         // there was a problem
+                        self.showingAuthenticateFail = true
                     }
                 }
             }
         } else {
             // no biometrics
+            self.showingAuthenticateFail = true
         }
     }
 }

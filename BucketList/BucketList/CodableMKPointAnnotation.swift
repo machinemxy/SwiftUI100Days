@@ -32,8 +32,8 @@ class CodableMKPointAnnotation: MKPointAnnotation, Codable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(title, forKey: .title)
-        try container.encode(subtitle, forKey: .subtitle)
+        try container.encode(wrappedTitle, forKey: .title)
+        try container.encode(wrappedSubtitle, forKey: .subtitle)
         try container.encode(coordinate.latitude, forKey: .latitude)
         try container.encode(coordinate.longitude, forKey: .longitude)
     }
