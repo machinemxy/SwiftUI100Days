@@ -10,6 +10,19 @@ import SwiftUI
 
 struct Flag: View {
     let flagName: String
+    let countryDic = [
+        "Estonia": "red black white",
+        "France": "blue white red",
+        "Germany": "black red yellow",
+        "Ireland": "green white orange",
+        "Italy": "green white red",
+        "Nigeria": "green white green",
+        "Poland": "white red",
+        "Russia": "white blue red",
+        "Spain": "red yellow red",
+        "UK": "red things over blue backgroud",
+        "US": "hard to describe"
+    ]
     
     var body: some View {
         Image(flagName)
@@ -17,6 +30,7 @@ struct Flag: View {
             .clipShape(Capsule())
             .overlay(Capsule().stroke(Color.black, lineWidth: 1))
             .shadow(color: .black, radius: 2)
+            .accessibility(label: Text(self.countryDic[flagName] ?? "Unknown flag"))
     }
 }
 
