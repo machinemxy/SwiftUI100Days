@@ -13,13 +13,14 @@
 		227699CA23B0F291005C5ECA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 227699C923B0F291005C5ECA /* Assets.xcassets */; };
 		227699CD23B0F291005C5ECA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 227699CC23B0F291005C5ECA /* Preview Assets.xcassets */; };
 		227699D023B0F291005C5ECA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 227699CE23B0F291005C5ECA /* LaunchScreen.storyboard */; };
-		227699D823B10415005C5ECA /* FileManager-Json.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227699D723B10415005C5ECA /* FileManager-Json.swift */; };
+		227699D823B10415005C5ECA /* FileManager-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227699D723B10415005C5ECA /* FileManager-Extension.swift */; };
 		227699DA23B108A7005C5ECA /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227699D923B108A7005C5ECA /* ImagePicker.swift */; };
 		227699DC23B10CF1005C5ECA /* SaveImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227699DB23B10CF1005C5ECA /* SaveImageView.swift */; };
+		227699DE23B25AD0005C5ECA /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227699DD23B25AD0005C5ECA /* DetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		227699C023B0F28E005C5ECA /* PictureBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PictureBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		227699C023B0F28E005C5ECA /* PokemonIndex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokemonIndex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		227699C323B0F28F005C5ECA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		227699C523B0F28F005C5ECA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		227699C723B0F28F005C5ECA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -27,9 +28,10 @@
 		227699CC23B0F291005C5ECA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		227699CF23B0F291005C5ECA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		227699D123B0F291005C5ECA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		227699D723B10415005C5ECA /* FileManager-Json.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager-Json.swift"; sourceTree = "<group>"; };
+		227699D723B10415005C5ECA /* FileManager-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager-Extension.swift"; sourceTree = "<group>"; };
 		227699D923B108A7005C5ECA /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		227699DB23B10CF1005C5ECA /* SaveImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveImageView.swift; sourceTree = "<group>"; };
+		227699DD23B25AD0005C5ECA /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,7 +56,7 @@
 		227699C123B0F28E005C5ECA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				227699C023B0F28E005C5ECA /* PictureBook.app */,
+				227699C023B0F28E005C5ECA /* PokemonIndex.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -66,8 +68,9 @@
 				227699C523B0F28F005C5ECA /* SceneDelegate.swift */,
 				227699C723B0F28F005C5ECA /* ContentView.swift */,
 				227699DB23B10CF1005C5ECA /* SaveImageView.swift */,
-				227699D723B10415005C5ECA /* FileManager-Json.swift */,
+				227699DD23B25AD0005C5ECA /* DetailView.swift */,
 				227699D923B108A7005C5ECA /* ImagePicker.swift */,
+				227699D723B10415005C5ECA /* FileManager-Extension.swift */,
 				227699C923B0F291005C5ECA /* Assets.xcassets */,
 				227699CE23B0F291005C5ECA /* LaunchScreen.storyboard */,
 				227699D123B0F291005C5ECA /* Info.plist */,
@@ -101,7 +104,7 @@
 			);
 			name = PictureBook;
 			productName = PictureBook;
-			productReference = 227699C023B0F28E005C5ECA /* PictureBook.app */;
+			productReference = 227699C023B0F28E005C5ECA /* PokemonIndex.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -158,8 +161,9 @@
 				227699C423B0F28F005C5ECA /* AppDelegate.swift in Sources */,
 				227699C623B0F28F005C5ECA /* SceneDelegate.swift in Sources */,
 				227699DA23B108A7005C5ECA /* ImagePicker.swift in Sources */,
+				227699DE23B25AD0005C5ECA /* DetailView.swift in Sources */,
 				227699C823B0F28F005C5ECA /* ContentView.swift in Sources */,
-				227699D823B10415005C5ECA /* FileManager-Json.swift in Sources */,
+				227699D823B10415005C5ECA /* FileManager-Extension.swift in Sources */,
 				227699DC23B10CF1005C5ECA /* SaveImageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -306,7 +310,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.mxy.PictureBook;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = PokemonIndex;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -326,7 +330,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.mxy.PictureBook;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = PokemonIndex;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

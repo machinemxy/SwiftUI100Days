@@ -6,7 +6,7 @@
 //  Copyright © 2019 Ma Xueyuan. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 extension FileManager {
     func getDocumentsDirectory() -> URL {
@@ -44,6 +44,40 @@ extension FileManager {
             try encoded.write(to: url, options: [.atomicWrite, .completeFileProtection])
         } catch {
             fatalError("Failed to write \(file).")
+        }
+    }
+    
+    func loadImage(from file: String) -> UIImage? {
+        let url = getDocumentsDirectory().appendingPathComponent(file)
+        
+        guard let data = try? Data(contentsOf: url) else {
+            print("Cannnot find file \(file).")
+            return nil
+        }
+        
+        return UIImage(data: data)
+    }
+    
+    func saveImage(_ image: UIImage, to file: String) {
+        let url = getDocumentsDirectory().appendingPathComponent(file)
+        
+        guard let data = image.jpegData(compressionQuality: 0.8) else {
+            fatalError("Failed to express image to data.")
+        }
+        
+        do {
+            try data.write(to: url)
+        } catch {
+            fatalError("Failed to write \(file).")
+        }
+    }
+    
+    func deleteData(_ file: String) {
+        let url = getDocumentsDirectory().appendingPathComponent(file)
+        do {
+            try removeItem(at: url)
+        } catch {
+            fatalError("Failed to delete \(file).")
         }
     }
 }
