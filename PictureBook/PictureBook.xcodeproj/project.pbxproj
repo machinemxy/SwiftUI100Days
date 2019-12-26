@@ -17,6 +17,9 @@
 		227699DA23B108A7005C5ECA /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227699D923B108A7005C5ECA /* ImagePicker.swift */; };
 		227699DC23B10CF1005C5ECA /* SaveImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227699DB23B10CF1005C5ECA /* SaveImageView.swift */; };
 		227699DE23B25AD0005C5ECA /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227699DD23B25AD0005C5ECA /* DetailView.swift */; };
+		227699E023B4F222005C5ECA /* LocationFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227699DF23B4F222005C5ECA /* LocationFetcher.swift */; };
+		227699E223B4F925005C5ECA /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227699E123B4F925005C5ECA /* MapView.swift */; };
+		227699E423B503EA005C5ECA /* ImageInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227699E323B503EA005C5ECA /* ImageInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +35,9 @@
 		227699D923B108A7005C5ECA /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		227699DB23B10CF1005C5ECA /* SaveImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveImageView.swift; sourceTree = "<group>"; };
 		227699DD23B25AD0005C5ECA /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		227699DF23B4F222005C5ECA /* LocationFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFetcher.swift; sourceTree = "<group>"; };
+		227699E123B4F925005C5ECA /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		227699E323B503EA005C5ECA /* ImageInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,7 +76,10 @@
 				227699DB23B10CF1005C5ECA /* SaveImageView.swift */,
 				227699DD23B25AD0005C5ECA /* DetailView.swift */,
 				227699D923B108A7005C5ECA /* ImagePicker.swift */,
+				227699E123B4F925005C5ECA /* MapView.swift */,
+				227699DF23B4F222005C5ECA /* LocationFetcher.swift */,
 				227699D723B10415005C5ECA /* FileManager-Extension.swift */,
+				227699E323B503EA005C5ECA /* ImageInfo.swift */,
 				227699C923B0F291005C5ECA /* Assets.xcassets */,
 				227699CE23B0F291005C5ECA /* LaunchScreen.storyboard */,
 				227699D123B0F291005C5ECA /* Info.plist */,
@@ -159,11 +168,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				227699C423B0F28F005C5ECA /* AppDelegate.swift in Sources */,
+				227699E423B503EA005C5ECA /* ImageInfo.swift in Sources */,
 				227699C623B0F28F005C5ECA /* SceneDelegate.swift in Sources */,
+				227699E023B4F222005C5ECA /* LocationFetcher.swift in Sources */,
 				227699DA23B108A7005C5ECA /* ImagePicker.swift in Sources */,
 				227699DE23B25AD0005C5ECA /* DetailView.swift in Sources */,
 				227699C823B0F28F005C5ECA /* ContentView.swift in Sources */,
 				227699D823B10415005C5ECA /* FileManager-Extension.swift in Sources */,
+				227699E223B4F925005C5ECA /* MapView.swift in Sources */,
 				227699DC23B10CF1005C5ECA /* SaveImageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

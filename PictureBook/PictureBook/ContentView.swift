@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var names = [String]()
+    @State private var imageInfos = [ImageInfo]()
     @State private var uiImageDic = Dictionary<String, UIImage>()
     @State private var uiImage: UIImage?
     @State private var showingImagePicker = false
@@ -18,14 +18,14 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach(names, id: \.self) { name in
-                    NavigationLink(destination: DetailView(name: name, uiImageDic: self.uiImageDic)) {
-                        Image(uiImage: self.uiImageDic[name]!)
+                ForEach(imageInfos) { imageInfo in
+                    NavigationLink(destination: DetailView(imageInfo: imageInfo, uiImageDic: self.uiImageDic)) {
+                        Image(uiImage: self.uiImageDic[imageInfo.name]!)
                             .resizable()
                             .scaledToFill()
                             .frame(width: 50, height: 50)
                             .clipShape(Circle())
-                        Text(name)
+                        Text(imageInfo.name)
                     }
                 }
                 .onDelete(perform: delete)
@@ -41,22 +41,22 @@ struct ContentView: View {
             }))
                 .onAppear(perform: loadData)
                 .sheet(isPresented: $showingSaveImageView, onDismiss: afterSavingImage) {
-                    SaveImageView(names: self.$names, uiImageDic: self.$uiImageDic, uiImage: self.$uiImage)
+                    SaveImageView(imageInfos: self.$imageInfos, uiImageDic: self.$uiImageDic, uiImage: self.$uiImage)
             }
         }
     }
     
     func loadData() {
-        // load names
-        if let names: [String] = FileManager.default.loadJson(from: "names.json") {
-            self.names = names
+        // load imageInfos
+        if let imageInfos: [ImageInfo] = FileManager.default.loadJson(from: "imageInfos.json") {
+            self.imageInfos = imageInfos
         }
         
         // load images
         var dic = Dictionary<String, UIImage>()
-        for name in names {
-            if let image = FileManager.default.loadImage(from: "\(name).dat") {
-                dic[name] = image
+        for imageInfo in imageInfos {
+            if let image = FileManager.default.loadImage(from: "\(imageInfo.name).dat") {
+                dic[imageInfo.name] = image
             }
         }
         uiImageDic = dic
@@ -77,12 +77,12 @@ struct ContentView: View {
     func delete(indexSet: IndexSet) {
         for index in indexSet {
             // delete stored image
-            FileManager.default.deleteData("\(names[index]).dat")
+            FileManager.default.deleteData("\(imageInfos[index].name).dat")
         }
         
         // update saved names
-        names.remove(atOffsets: indexSet)
-        FileManager.default.saveJson(names, to: "names.json")
+        imageInfos.remove(atOffsets: indexSet)
+        FileManager.default.saveJson(imageInfos, to: "imageInfos.json")
     }
 }
 
