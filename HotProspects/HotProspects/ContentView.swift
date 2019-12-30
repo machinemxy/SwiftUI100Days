@@ -9,27 +9,32 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var selectedTab = 0
+    var prospects = Prospects()
     
     var body: some View {
-        TabView(selection: $selectedTab) {
-            Text("Tab 1")
+        TabView {
+            ProspectsView(filter: .none)
                 .tabItem {
-                    Image(systemName: "star")
-                    Text("One")
+                    Image(systemName: "person.3")
+                    Text("Everyone")
                 }
-                .onTapGesture {
-                    self.selectedTab = 1
-                }
-                .tag(0)
-            
-            Text("Tab 2")
+            ProspectsView(filter: .contacted)
                 .tabItem {
-                    Image(systemName: "star.fill")
-                    Text("Two")
+                    Image(systemName: "checkmark.circle")
+                    Text("Contacted")
                 }
-                .tag(1)
+            ProspectsView(filter: .uncontacted)
+                .tabItem {
+                    Image(systemName: "questionmark.diamond")
+                    Text("Uncontacted")
+                }
+            MeView()
+                .tabItem {
+                    Image(systemName: "person.crop.square")
+                    Text("Me")
+                }
         }
+        .environmentObject(prospects)
     }
 }
 
