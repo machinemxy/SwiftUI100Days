@@ -13,7 +13,8 @@ struct CardView: View {
     @Environment(\.accessibilityEnabled) var accessibilityEnabled
     
     let card: Card
-    var removal: (() -> Void)? = nil
+    var wrongAction: (() -> Void)? = nil
+    var correctAction: (() -> Void)? = nil
     
     @State private var isShowingAnswer = false
     @State private var offset = CGSize.zero
@@ -71,16 +72,16 @@ struct CardView: View {
                 }
 
                 .onEnded { _ in
-                    if abs(self.offset.width) > 100 {
-                        if self.offset.width > 0 {
-                            self.feedback.notificationOccurred(.success)
-                        } else {
-                            self.feedback.notificationOccurred(.error)
-                        }
-                        
-                        self.removal?()
+                    if self.offset.width > 100 {
+                        self.feedback.notificationOccurred(.success)
+                        self.correctAction?()
+                    } else if self.offset.width < -100 {
+                        self.feedback.notificationOccurred(.error)
+                        self.wrongAction?()
                     } else {
-                        self.offset = .zero
+                        withAnimation {
+                            self.offset = .zero
+                        }
                     }
                 }
         )

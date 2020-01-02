@@ -10,7 +10,7 @@ import SwiftUI
 import CoreHaptics
 
 struct ContentView: View {
-    static let maxTime = 5
+    static let maxTime = 100
     
     @Environment(\.accessibilityDifferentiateWithoutColor) var differentiateWithoutColor
     @Environment(\.accessibilityEnabled) var accessibilityEnabled
@@ -20,7 +20,10 @@ struct ContentView: View {
     @State private var isActive = true
     @State private var showingEditScreen = false
     @State private var showingTimeUpAlert = false
+    @State private var showingSettingSheet = false
     @State private var engine: CHHapticEngine?
+    @State private var putCardBackWhenWrong = false
+    @State private var antiSwipeTooFastProperty = false
     
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
@@ -45,17 +48,25 @@ struct ContentView: View {
                 
                 ZStack {
                     ForEach(0..<cards.count, id: \.self) { index in
-                        CardView(card: self.cards[index]) {
-                           withAnimation {
-                               self.removeCard(at: index)
-                           }
-                        }
+                        CardView(card: self.cards[index], wrongAction: {
+                            withAnimation {
+                                if self.putCardBackWhenWrong {
+                                    self.addCardToLast(at: index)
+                                } else {
+                                    self.removeCard(at: index)
+                                }
+                            }
+                        }, correctAction: {
+                            withAnimation {
+                                self.removeCard(at: index)
+                            }
+                        })
                         .stacked(at: index, in: self.cards.count)
                         .allowsHitTesting(index == self.cards.count - 1)
                         .accessibility(hidden: index < self.cards.count - 1)
                     }
                 }
-                .allowsHitTesting(timeRemaining > 0)
+                .allowsHitTesting(timeRemaining > 0 && !antiSwipeTooFastProperty)
                 
                 if cards.isEmpty {
                     Button("Start Again", action: resetCards)
@@ -68,6 +79,15 @@ struct ContentView: View {
             
             VStack {
                 HStack {
+                    Button(action: {
+                        self.showingSettingSheet = true
+                    }) {
+                        Image(systemName: "gear")
+                        .padding()
+                        .background(Color.black.opacity(0.7))
+                        .clipShape(Circle())
+                    }
+                    
                     Spacer()
 
                     Button(action: {
@@ -159,6 +179,18 @@ struct ContentView: View {
                 self.resetCards()
             }))
         }
+        .actionSheet(isPresented: $showingSettingSheet) {
+            ActionSheet(title: Text("Setting"), message: Text("What should the app do when you are wrong?"), buttons: [
+                .default(Text("Remove the card"), action: {
+                    self.putCardBackWhenWrong = false
+                    print(self.cards)
+                }),
+                .default(Text("Put the card to the last"), action: {
+                    self.putCardBackWhenWrong = true
+                    print(self.cards)
+                })
+            ])
+        }
     }
     
     func removeCard(at index: Int) {
@@ -168,6 +200,19 @@ struct ContentView: View {
         
         if cards.isEmpty {
             isActive = false
+        }
+    }
+    
+    func addCardToLast(at index: Int) {
+        guard index >= 0 else { return }
+        
+        let newCard = cards[index]
+        cards.remove(at: index)
+        antiSwipeTooFastProperty = true
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.cards.insert(newCard, at: 0)
+            self.antiSwipeTooFastProperty = false
         }
     }
     
