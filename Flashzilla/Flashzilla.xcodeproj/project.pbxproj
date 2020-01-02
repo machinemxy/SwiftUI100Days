@@ -15,6 +15,7 @@
 		22769A2923BB5EA9005C5ECA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22769A2723BB5EA9005C5ECA /* LaunchScreen.storyboard */; };
 		22769A3123BB5F7B005C5ECA /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22769A3023BB5F7B005C5ECA /* Card.swift */; };
 		22769A3323BB7804005C5ECA /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22769A3223BB7804005C5ECA /* CardView.swift */; };
+		22769A3523BDCFDB005C5ECA /* EditCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22769A3423BDCFDB005C5ECA /* EditCards.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		22769A2A23BB5EA9005C5ECA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		22769A3023BB5F7B005C5ECA /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		22769A3223BB7804005C5ECA /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		22769A3423BDCFDB005C5ECA /* EditCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCards.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				22769A1E23BB5EA7005C5ECA /* SceneDelegate.swift */,
 				22769A2023BB5EA7005C5ECA /* ContentView.swift */,
 				22769A3223BB7804005C5ECA /* CardView.swift */,
+				22769A3423BDCFDB005C5ECA /* EditCards.swift */,
 				22769A3023BB5F7B005C5ECA /* Card.swift */,
 				22769A2223BB5EA9005C5ECA /* Assets.xcassets */,
 				22769A2723BB5EA9005C5ECA /* LaunchScreen.storyboard */,
@@ -155,6 +158,7 @@
 				22769A1D23BB5EA7005C5ECA /* AppDelegate.swift in Sources */,
 				22769A1F23BB5EA7005C5ECA /* SceneDelegate.swift in Sources */,
 				22769A2123BB5EA7005C5ECA /* ContentView.swift in Sources */,
+				22769A3523BDCFDB005C5ECA /* EditCards.swift in Sources */,
 				22769A3123BB5F7B005C5ECA /* Card.swift in Sources */,
 				22769A3323BB7804005C5ECA /* CardView.swift in Sources */,
 			);
