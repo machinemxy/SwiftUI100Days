@@ -10,7 +10,7 @@ import SwiftUI
 import CoreHaptics
 
 struct ContentView: View {
-    static let maxTime = 100
+    static let maxTime = 10
     
     @Environment(\.accessibilityDifferentiateWithoutColor) var differentiateWithoutColor
     @Environment(\.accessibilityEnabled) var accessibilityEnabled
@@ -183,11 +183,9 @@ struct ContentView: View {
             ActionSheet(title: Text("Setting"), message: Text("What should the app do when you are wrong?"), buttons: [
                 .default(Text("Remove the card"), action: {
                     self.putCardBackWhenWrong = false
-                    print(self.cards)
                 }),
                 .default(Text("Put the card to the last"), action: {
                     self.putCardBackWhenWrong = true
-                    print(self.cards)
                 })
             ])
         }
