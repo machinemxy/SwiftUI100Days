@@ -27,9 +27,13 @@ struct ContentView: View {
                     .padding()
                 
                 List(usedWords, id: \.self) { word in
-                    HStack {
-                        Image(systemName: "\(word.count).circle")
-                        Text(word)
+                    GeometryReader { geo in
+                        HStack {
+                            Image(systemName: "\(word.count).circle")
+                            Text(word)
+                            Spacer()
+                        }
+                        .offset(x: geo.frame(in: .global).minY >= 400 ? geo.frame(in: .global).minY - 400 : 0)
                     }
                     .accessibilityElement(children: .ignore)
                     .accessibility(label: Text("\(word), \(word.count) letters"))
@@ -50,6 +54,14 @@ struct ContentView: View {
     
     func addNewWord() {
         let answer = newWord.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        // debug
+        if answer == "debug" {
+            usedWords.insert(answer, at: 0)
+            score += answer.count
+            newWord = ""
+            return
+        }
         
         guard answer.count > 0 else {
             return
