@@ -20,26 +20,33 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            VStack {
-                TextField("Enter your word", text: $newWord, onCommit: addNewWord)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .autocapitalization(.none)
-                    .padding()
-                
-                List(usedWords, id: \.self) { word in
-                    GeometryReader { geo in
-                        HStack {
-                            Image(systemName: "\(word.count).circle")
-                            Text(word)
-                            Spacer()
+            GeometryReader { superGeo in
+                VStack {
+                    TextField("Enter your word", text: self.$newWord, onCommit: self.addNewWord)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .autocapitalization(.none)
+                        .padding()
+                    
+                    List(self.usedWords, id: \.self) { word in
+                        GeometryReader { geo in
+                            HStack {
+                                Image(systemName: "\(word.count).circle")
+                                    .foregroundColor(Color(red: 0,
+                                        green: Double(geo.frame(in: .global).maxY) / Double(superGeo.frame(in: .global).maxY),
+                                        blue: 0))
+                                
+                                Text(word)
+                                
+                                Spacer()
+                            }
+                            .offset(x: geo.frame(in: .global).minY >= 400 ? geo.frame(in: .global).minY - 400 : 0)
                         }
-                        .offset(x: geo.frame(in: .global).minY >= 400 ? geo.frame(in: .global).minY - 400 : 0)
+                        .accessibilityElement(children: .ignore)
+                        .accessibility(label: Text("\(word), \(word.count) letters"))
                     }
-                    .accessibilityElement(children: .ignore)
-                    .accessibility(label: Text("\(word), \(word.count) letters"))
+                    
+                    Text("Score: \(self.score)")
                 }
-                
-                Text("Score: \(score)")
             }
             .navigationBarTitle(rootWord)
             .navigationBarItems(leading: Button(action: startGame, label: {
