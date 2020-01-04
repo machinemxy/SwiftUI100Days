@@ -22,11 +22,14 @@ struct MissionView: View {
         GeometryReader { geometry in
             ScrollView(.vertical) {
                 VStack {
-                    Image(self.mission.image)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(maxWidth: geometry.size.width * 0.7)
-                        .padding(.top)
+                    GeometryReader { subGeo in
+                        Image(self.mission.image)
+                            .resizable()
+                            .scaledToFit()
+                            .position(x: subGeo.frame(in: .local).midX, y: subGeo.frame(in: .local).midY)
+                            .frame(width: geometry.size.width * self.imageWidthMultiplier(mainGeo: geometry.frame(in: .global).minY, subGeo: subGeo.frame(in: .global).minY))
+                    }
+                    .padding(.top)
                     
                     Text(self.mission.formattedLaunchDate).font(.headline)
                     
@@ -80,6 +83,16 @@ struct MissionView: View {
         }
         
         self.astronauts = matches
+    }
+    
+    func imageWidthMultiplier(mainGeo: CGFloat, subGeo: CGFloat) -> CGFloat {
+        let adjustedSubGeo: CGFloat = subGeo - 16
+        if mainGeo - adjustedSubGeo > 50 {
+            return 0.5
+        } else {
+            return 1 - (mainGeo - adjustedSubGeo) / 100
+        }
+        
     }
 }
 
