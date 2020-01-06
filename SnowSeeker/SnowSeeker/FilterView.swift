@@ -96,7 +96,6 @@ struct FilterView: View {
                     }
                 }
             }
-            .navigationViewStyle(StackNavigationViewStyle())
             .navigationBarTitle("Filter", displayMode: .inline)
             .navigationBarItems(trailing: Button(action: {
                 self.filter.countries = self.selectedCountries
@@ -113,6 +112,7 @@ struct FilterView: View {
                 self.selectedPrices = self.filter.prices
             }
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
