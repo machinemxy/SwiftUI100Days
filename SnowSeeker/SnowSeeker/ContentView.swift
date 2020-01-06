@@ -60,6 +60,15 @@ struct ContentView: View {
             }, label: {
                 Text("Sort")
             })
+            , trailing: Button(action: {
+                self.showingFilterView = true
+            }
+            , label: {
+                Text("Filter")
+            }))
+            .sheet(isPresented: $showingFilterView, onDismiss: updateSortedAndFilteredResorts) {
+                FilterView(filter: self.$filter)
+            }
             .actionSheet(isPresented: $showingSortCondition) {
                 ActionSheet(title: Text("Sort by"), message: nil, buttons: [
                     .default(Text("Default"), action: {
@@ -76,15 +85,6 @@ struct ContentView: View {
                     }),
                     .cancel()
                 ])
-            }
-            , trailing: Button(action: {
-                self.showingFilterView = true
-            }
-            , label: {
-                Text("Filter")
-            }))
-            .sheet(isPresented: $showingFilterView, onDismiss: updateSortedAndFilteredResorts) {
-                FilterView(filter: self.$filter)
             }
             
             WelcomeView()
