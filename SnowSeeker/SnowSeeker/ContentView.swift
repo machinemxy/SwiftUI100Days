@@ -59,7 +59,25 @@ struct ContentView: View {
                 self.showingSortCondition = true
             }, label: {
                 Text("Sort")
-            }), trailing: Button(action: {
+            })
+            .actionSheet(isPresented: $showingSortCondition) {
+                ActionSheet(title: Text("Sort by"), message: nil, buttons: [
+                    .default(Text("Default"), action: {
+                        self.sortBy = .def
+                        self.updateSortedAndFilteredResorts()
+                    }),
+                    .default(Text("Alphabetical"), action: {
+                        self.sortBy = .alphabetical
+                        self.updateSortedAndFilteredResorts()
+                    }),
+                    .default(Text("Country"), action: {
+                        self.sortBy = .country
+                        self.updateSortedAndFilteredResorts()
+                    }),
+                    .cancel()
+                ])
+            }
+            , trailing: Button(action: {
                 self.showingFilterView = true
             }
             , label: {
@@ -71,22 +89,7 @@ struct ContentView: View {
             
             WelcomeView()
         }
-        .actionSheet(isPresented: $showingSortCondition) {
-            ActionSheet(title: Text("Sort by"), message: nil, buttons: [
-                .default(Text("Default"), action: {
-                    self.sortBy = .def
-                    self.updateSortedAndFilteredResorts()
-                }),
-                .default(Text("Alphabetical"), action: {
-                    self.sortBy = .alphabetical
-                    self.updateSortedAndFilteredResorts()
-                }),
-                .default(Text("Country"), action: {
-                    self.sortBy = .country
-                    self.updateSortedAndFilteredResorts()
-                })
-            ])
-        }
+        
     }
     
     func updateSortedAndFilteredResorts() {
